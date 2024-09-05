@@ -750,27 +750,3 @@ h3 {
 code {
   font-family: var(--font-mono);
 }
-
-/*
-    ICONS
-*/
-.icon,
-input[type="checkbox"]::after {
-  font-family: "Material Symbols Sharp";
-  font-weight: normal;
-  font-style: normal;
-  font-size: var(--icon-size);
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  pointer-events: none;
-  color: inherit;
-}

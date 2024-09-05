@@ -1,5 +1,4 @@
 export { ConfirmationButton } from "./Components/confirmationButton";
-export { Icon } from "./Components/icon";
 export { Modal } from "./Components/modal";
 export { Popover } from "./Components/popover";
 export { ProgressBar } from "./Components/progressBar";

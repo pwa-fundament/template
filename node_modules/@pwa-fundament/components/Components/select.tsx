@@ -12,7 +12,7 @@ export function Select(
         bind:value={value}
         children:append={[options, StringToOption]}
       ></select>
-      <span class="icon">arrow_drop_down</span>
+      <span class="material-icons">arrow_drop_down</span>
     </div>
   );
 }
