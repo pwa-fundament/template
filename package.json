@@ -1,21 +1,7 @@
 {
-  "name": "@pwa-fundament/template",
-  "version": "1.0.0-beta1",
-  "description": "",
-  "main": "index.ts",
   "scripts": {
     "build": "esbuild src/index.tsx --bundle --loader:.png=file --loader:.jpg=file --loader:.ttf=file --loader:.woff=file --loader:.woff2=file --outdir=dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pwa-fundament/template.git"
-  },
-  "author": "marlon-erler",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/pwa-fundament/template/issues"
-  },
-  "homepage": "https://github.com/pwa-fundament/template#readme",
   "dependencies": {
     "@pwa-fundament/components": "^1.0.0-beta1",
     "@pwa-fundament/reactivity": "^1.0.0-beta1",
