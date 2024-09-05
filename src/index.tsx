@@ -1,5 +1,4 @@
 import "@pwa-fundament/stylesheet/index.css";
-import "material-icons/iconfont/material-icons.css";
 
 import { Theme, setTheme } from "@pwa-fundament/themes";
 
