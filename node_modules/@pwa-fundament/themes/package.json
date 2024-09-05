@@ -1,0 +1,19 @@
+{
+  "name": "@pwa-fundament/themes",
+  "version": "1.0.0-beta1",
+  "description": "The repository to clone as project template",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pwa-fundament/themes.git"
+  },
+  "author": "marlon-erler",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/pwa-fundament/themes/issues"
+  },
+  "homepage": "https://github.com/pwa-fundament/themes#readme"
+}
