@@ -2,12 +2,40 @@ import "./styles.css";
 
 import * as React from "@pwa-fundament/reactivity";
 
+import ComponentPage from "./componentPage";
+import StartPage from "./startPage";
+
+// TYPES
+export enum Page {
+  StartPage,
+  Components,
+  Customization,
+  UtilityClasses,
+}
+
+// ROUTING
+const selectedPage = new React.State(Page.StartPage);
+
+export function changePage(page: Page) {
+  selectedPage.value = page;
+}
+
+export class PageHiddenState extends React.State<boolean> {
+  constructor(selectedPage: React.State<Page>, self: Page) {
+    super(false);
+
+    selectedPage.subscribe((newValue) => {
+      this.value = newValue != self;
+    });
+  }
+}
+
 // MAIN
 export default function ViewRoot() {
   return (
-    <div class="flex-column width-100 height-100 align-center justify-center">
-      <span class="material-icons-outlined">favorite</span>
-      <b>Hello, world!</b>
+    <div>
+      {StartPage(selectedPage)}
+      {ComponentPage(selectedPage)}
     </div>
   );
 }

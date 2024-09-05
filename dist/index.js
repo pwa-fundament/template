@@ -5,6 +5,38 @@
   }
 
   // node_modules/@pwa-fundament/reactivity/index.ts
+  var State = class {
+    _value;
+    _bindings = /* @__PURE__ */ new Set();
+    // init
+    constructor(initialValue) {
+      this._value = initialValue;
+    }
+    // value
+    get value() {
+      return this._value;
+    }
+    set value(newValue) {
+      if (this._value == newValue) return;
+      this._value = newValue;
+      this.callSubscriptions();
+    }
+    // subscriptions
+    callSubscriptions() {
+      this._bindings.forEach((fn) => fn(this._value));
+    }
+    subscribe(fn) {
+      this._bindings.add(fn);
+      fn(this._value);
+    }
+    subscribeSilent(fn) {
+      this._bindings.add(fn);
+    }
+    // stringify
+    toString() {
+      return JSON.stringify(this._value);
+    }
+  };
   function createElement(tagName, attributes = {}, ...children) {
     const element = document.createElement(tagName);
     if (attributes != null)
@@ -106,9 +138,150 @@
     return element;
   }
 
+  // node_modules/@pwa-fundament/components/Components/splitView.tsx
+  function SplitView(data) {
+    function scrollToIndex() {
+      container.scrollLeft = 0;
+    }
+    const container = /* @__PURE__ */ createElement("div", { class: "split-view" }, /* @__PURE__ */ createElement("div", { class: "index-pane", "on:mouseenter": scrollToIndex }, ...data.map((x) => x[0])), /* @__PURE__ */ createElement("div", { class: "content-pane" }, ...data.map((x) => x[1])));
+    return container;
+  }
+  function SplitViewLink(label, elementToLink) {
+    function scroll() {
+      elementToLink.scrollIntoView();
+    }
+    return /* @__PURE__ */ createElement("button", { class: "standard", "on:click": scroll }, label);
+  }
+  function createSplitViewEntry(label, contentElement) {
+    const link = SplitViewLink(label, contentElement);
+    return [link, contentElement];
+  }
+
+  // node_modules/@pwa-fundament/components/Components/icon.tsx
+  function Icon(iconName) {
+    return /* @__PURE__ */ createElement("span", { class: "material-symbols-sharp" }, iconName);
+  }
+
+  // src/Components/header.tsx
+  function Header(title) {
+    function closePage() {
+      changePage(0 /* StartPage */);
+    }
+    return /* @__PURE__ */ createElement("header", null, /* @__PURE__ */ createElement("button", { class: "standard square", "on:click": closePage }, Icon("arrow_back")), /* @__PURE__ */ createElement("b", null, title));
+  }
+
+  // src/Main/componentPage.tsx
+  function ComponentPage(selectedPage2) {
+    const isHidden = new PageHiddenState(selectedPage2, 1 /* Components */);
+    return /* @__PURE__ */ createElement("div", { style: "split-view-page", "toggle:hidden": isHidden }, Header("Components"), SplitView([
+      createSplitViewEntry(
+        "Button",
+        /* @__PURE__ */ createElement("div", { style: "min-height: 90vh" }, "BUTTON")
+      ),
+      createSplitViewEntry(
+        "Modal",
+        /* @__PURE__ */ createElement("div", { style: "min-height: 90vh; display: block" }, "MODAL")
+      )
+    ]));
+  }
+
+  // src/Components/documentationLink.tsx
+  function DocumentationLink(iconName, title, description, action) {
+    return /* @__PURE__ */ createElement("button", { class: "standard documentation-link", "on:click": action }, Icon(iconName), /* @__PURE__ */ createElement("div", null, /* @__PURE__ */ createElement("b", null, title), /* @__PURE__ */ createElement("span", { class: "secondary" }, description)), Icon("arrow_forward"));
+  }
+
+  // src/Components/featureTile.tsx
+  function FeatureTile(iconName, title, description) {
+    return /* @__PURE__ */ createElement("div", { class: "surface feature-tile" }, Icon(iconName), /* @__PURE__ */ createElement("div", null, /* @__PURE__ */ createElement("b", null, title), /* @__PURE__ */ createElement("p", { class: "secondary" }, description)));
+  }
+
+  // src/Components/gettingStartedStep.tsx
+  function GettingStartedStep(number, description) {
+    return /* @__PURE__ */ createElement("div", { class: "getting-started-step" }, /* @__PURE__ */ createElement("span", { class: "number" }, number), description);
+  }
+
+  // src/Main/startPage.tsx
+  function StartPage(selectedPage2) {
+    const isHidden = new PageHiddenState(selectedPage2, 0 /* StartPage */);
+    function openGithub() {
+      window.open("https://github.com/marlon-erler/web-app-base");
+    }
+    function getStarted() {
+      gettingStartedSection.scrollIntoView();
+    }
+    const titleSection = /* @__PURE__ */ createElement("section", { class: "hero", id: "title-section" }, /* @__PURE__ */ createElement("div", { class: "shadow" }), /* @__PURE__ */ createElement("div", null, /* @__PURE__ */ createElement("h1", null, "Fundament"), /* @__PURE__ */ createElement("h3", null, "No Setup. No Bloat. Everything you need."), /* @__PURE__ */ createElement("p", null, "Fundament is a foundation for full-featured PWAs.", /* @__PURE__ */ createElement("br", null), "Just download and start building your app."), /* @__PURE__ */ createElement("div", { class: "button-row" }, /* @__PURE__ */ createElement("button", { class: "standard", "on:click": openGithub }, "View on Github"), /* @__PURE__ */ createElement("button", { class: "primary", "on:click": getStarted }, "Get Started"))));
+    const featureSection = /* @__PURE__ */ createElement("section", { class: "content" }, /* @__PURE__ */ createElement("div", null, /* @__PURE__ */ createElement("h2", null, "Features"), /* @__PURE__ */ createElement("div", { class: "feature-grid" }, FeatureTile(
+      "package",
+      "Complete",
+      "Stylesheet, components, and reactivity included."
+    ), FeatureTile(
+      "palette",
+      "Customizable",
+      "Select an existing theme or build your own with ease."
+    ), FeatureTile(
+      "wifi_off",
+      "Offline Support",
+      "Your PWA is available offline right out of the box."
+    ), FeatureTile(
+      "code",
+      "Free & Open Source",
+      "Check out the code on GitHub or create your own fork."
+    ))));
+    const gettingStartedSection = /* @__PURE__ */ createElement("section", { class: "content" }, /* @__PURE__ */ createElement("div", null, /* @__PURE__ */ createElement("h2", null, "Get Started"), /* @__PURE__ */ createElement("div", { class: "getting-started-list" }, GettingStartedStep(
+      1,
+      /* @__PURE__ */ createElement("span", null, "Download the", " ", /* @__PURE__ */ createElement("a", { href: "https://github.com/marlon-erler/fundament/releases" }, "latest release"), " ", "from GitHub")
+    ), GettingStartedStep(
+      2,
+      /* @__PURE__ */ createElement("span", null, "Run ", /* @__PURE__ */ createElement("b", null, "npm install"), " to get all dependencies")
+    ), GettingStartedStep(
+      3,
+      /* @__PURE__ */ createElement("span", null, "Serve ", /* @__PURE__ */ createElement("b", null, "dist"), " on a local web server")
+    ), GettingStartedStep(
+      4,
+      /* @__PURE__ */ createElement("span", null, "Edit ", /* @__PURE__ */ createElement("b", null, "src/Main/view.tsx"))
+    ), GettingStartedStep(
+      5,
+      /* @__PURE__ */ createElement("span", null, "Run ", /* @__PURE__ */ createElement("b", null, "npm run build"), " to build the app")
+    ))));
+    const documentationLinkSection = /* @__PURE__ */ createElement("section", { class: "content" }, /* @__PURE__ */ createElement("div", null, /* @__PURE__ */ createElement("h2", null, "Documentation"), /* @__PURE__ */ createElement("div", { class: "documentation-link-list" }, DocumentationLink(
+      "deployed_code",
+      "Components",
+      "Buttons, Sliders, Modals, and more",
+      () => changePage(1 /* Components */)
+    ), DocumentationLink(
+      "cycle",
+      "Reactivity",
+      "Check out the documentation for bloatless-react",
+      () => window.open("https://github.com/marlon-erler/bloatless-react")
+    ), DocumentationLink(
+      "palette",
+      "Customization",
+      "Modify themes or create your own",
+      () => changePage(2 /* Customization */)
+    ), DocumentationLink(
+      "code",
+      "Utility Classes",
+      "Build components faster with utility classes",
+      () => changePage(3 /* UtilityClasses */)
+    ))));
+    return /* @__PURE__ */ createElement("div", { "toggle:hidden": isHidden }, titleSection, featureSection, gettingStartedSection, documentationLinkSection);
+  }
+
   // src/Main/viewRoot.tsx
+  var selectedPage = new State(0 /* StartPage */);
+  function changePage(page) {
+    selectedPage.value = page;
+  }
+  var PageHiddenState = class extends State {
+    constructor(selectedPage2, self) {
+      super(false);
+      selectedPage2.subscribe((newValue) => {
+        this.value = newValue != self;
+      });
+    }
+  };
   function ViewRoot() {
-    return /* @__PURE__ */ createElement("div", { class: "flex-column width-100 height-100 align-center justify-center" }, /* @__PURE__ */ createElement("span", { class: "material-icons-outlined" }, "favorite"), /* @__PURE__ */ createElement("b", null, "Hello, world!"));
+    return /* @__PURE__ */ createElement("div", null, StartPage(selectedPage), ComponentPage(selectedPage));
   }
 
   // src/_Support/serviceWorker.ts
@@ -130,7 +303,7 @@
   }
 
   // src/index.tsx
-  document.title = "My App";
+  document.title = "PWA Fundament";
   setTheme("standard" /* Standard */);
   registerServiceWorker();
   document.body.append(ViewRoot());
