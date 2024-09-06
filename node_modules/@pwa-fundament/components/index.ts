@@ -5,4 +5,3 @@ export * from "./Components/popover";
 export * from "./Components/progressBar";
 export * from "./Components/select";
 export * from "./Components/slider";
-export * from "./Components/splitView";

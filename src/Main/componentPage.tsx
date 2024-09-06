@@ -3,10 +3,7 @@ import "./startPage.css";
 import * as React from "@pwa-fundament/reactivity";
 
 import { Page, PageHiddenState } from "./viewRoot";
-import {
-  SplitView,
-  createSplitViewEntry,
-} from "@pwa-fundament/components/Components/splitView";
+import { SplitView, createSplitViewEntry } from "../Components/splitView";
 
 import Header from "../Components/header";
 
