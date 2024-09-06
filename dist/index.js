@@ -138,7 +138,7 @@
     return element;
   }
 
-  // node_modules/@pwa-fundament/components/Components/splitView.tsx
+  // src/Components/splitView.tsx
   function SplitView(data) {
     function scrollToIndex() {
       container.scrollLeft = 0;
@@ -238,7 +238,7 @@
       /* @__PURE__ */ createElement("span", null, "Serve ", /* @__PURE__ */ createElement("b", null, "dist"), " on a local web server")
     ), GettingStartedStep(
       4,
-      /* @__PURE__ */ createElement("span", null, "Edit ", /* @__PURE__ */ createElement("b", null, "src/Main/view.tsx"))
+      /* @__PURE__ */ createElement("span", null, "Use ", /* @__PURE__ */ createElement("b", null, "src/index.tsx"), " as entry point")
     ), GettingStartedStep(
       5,
       /* @__PURE__ */ createElement("span", null, "Run ", /* @__PURE__ */ createElement("b", null, "npm run build"), " to build the app")

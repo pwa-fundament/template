@@ -106,7 +106,7 @@ export default function StartPage(selectedPage: React.State<Page>) {
           {GettingStartedStep(
             4,
             <span>
-              Edit <b>src/Main/view.tsx</b>
+              Use <b>src/index.tsx</b> as entry point
             </span>
           )}
           {GettingStartedStep(
