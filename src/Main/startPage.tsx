@@ -4,9 +4,9 @@ import * as React from "@pwa-fundament/reactivity";
 
 import { Page, PageHiddenState, changePage } from "./viewRoot";
 
-import DocumentationLink from "../Components/documentationLink";
-import FeatureTile from "../Components/featureTile";
-import GettingStartedStep from "../Components/gettingStartedStep";
+import { DocumentationLink } from "../Components/documentationLink";
+import { FeatureTile } from "../Components/featureTile";
+import { GettingStartedStep } from "../Components/gettingStartedStep";
 
 export default function StartPage(selectedPage: React.State<Page>) {
   // ROUTING

@@ -1,6 +1,6 @@
 import * as React from "@pwa-fundament/reactivity";
 
-export default function GettingStartedStep(
+export function GettingStartedStep(
   number: number,
   description: HTMLElement,
 ) {

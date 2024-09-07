@@ -1,0 +1,4 @@
+.component-example {
+  border: 1px solid var(--hr-color);
+  padding: var(--content-padding);
+}

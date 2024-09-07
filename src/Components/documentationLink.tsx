@@ -2,7 +2,7 @@ import * as React from "@pwa-fundament/reactivity";
 
 import { Icon } from "@pwa-fundament/components";
 
-export default function DocumentationLink(
+export function DocumentationLink(
   iconName: string,
   title: string,
   description: string,

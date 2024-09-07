@@ -113,6 +113,8 @@ section.content h2 {
 .split-view > .content-pane {
   min-width: calc(100% - 3rem);
   scroll-snap-align: end;
+
+  gap: var(--gap-in-grid);
 }
 
 @media (min-width: 640px) {

@@ -4,7 +4,7 @@ import { Page, changePage } from "../Main/viewRoot";
 
 import { Icon } from "@pwa-fundament/components";
 
-export default function Header(title: string) {
+export function Header(title: string) {
   function closePage() {
     changePage(Page.StartPage);
   }
