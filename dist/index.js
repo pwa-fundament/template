@@ -1638,7 +1638,7 @@
     const languageClass = `language-${language}`;
     const codeElement = /* @__PURE__ */ createElement("code", { class: languageClass }, code);
     import_prismjs.default.highlightElement(codeElement);
-    return /* @__PURE__ */ createElement("pre", null, codeElement);
+    return /* @__PURE__ */ createElement("pre", { class: "code-block" }, codeElement);
   }
 
   // src/Components/componentDocumentationEntry.tsx
@@ -1791,7 +1791,7 @@
 
   // src/index.tsx
   document.title = "PWA Fundament";
-  setTheme("standard" /* Standard */);
+  setTheme("aero" /* Aero */);
   document.body.append(ViewRoot());
 })();
 /*! Bundled license information:

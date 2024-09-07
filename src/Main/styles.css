@@ -137,3 +137,7 @@ header {
 header b {
   margin-left: 5px;
 }
+
+pre.code-block {
+  border-radius: var(--textfield-corner-radius) !important;
+}

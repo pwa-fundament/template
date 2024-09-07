@@ -1,4 +1,4 @@
-/* ../stylesheet/index.css */
+/* node_modules/@pwa-fundament/stylesheet/index.css */
 * {
   box-sizing: border-box;
   line-height: 1;
@@ -948,6 +948,9 @@ header {
 }
 header b {
   margin-left: 5px;
+}
+pre.code-block {
+  border-radius: var(--textfield-corner-radius) !important;
 }
 
 /* src/Main/startPage.css */

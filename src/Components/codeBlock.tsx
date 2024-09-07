@@ -8,5 +8,5 @@ export function CodeBlock(code: string, language: string) {
   const languageClass: string = `language-${language}`;
   const codeElement: HTMLElement = <code class={languageClass}>{code}</code>;
   Prism.highlightElement(codeElement);
-  return <pre>{codeElement}</pre>;
+  return <pre class="code-block">{codeElement}</pre>;
 }
