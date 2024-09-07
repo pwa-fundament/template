@@ -1,11 +1,10 @@
-/* node_modules/@pwa-fundament/stylesheet/index.css */
+/* ../stylesheet/index.css */
 * {
   box-sizing: border-box;
   line-height: 1;
   border: none;
   margin: 0px;
   padding: 0px;
-  font-family: inherit;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -19,6 +18,12 @@ body {
 }
 main {
   padding: var(--content-padding);
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 [hidden] {
   display: none;
@@ -525,7 +530,7 @@ h2 {
 h3 {
   font-size: 1.4rem;
 }
-* {
+body {
   font-family: var(--font-main);
 }
 code {

@@ -11,8 +11,6 @@
   margin: 0px;
   padding: 0px;
 
-  font-family: inherit;
-
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -29,6 +27,13 @@ body {
 
 main {
   padding: var(--content-padding);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 [hidden] {
@@ -743,7 +748,7 @@ h3 {
   font-size: 1.4rem;
 }
 
-* {
+body {
   font-family: var(--font-main);
 }
 
