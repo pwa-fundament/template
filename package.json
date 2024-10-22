@@ -1,13 +1,13 @@
 {
-  "scripts": {
-    "build": "esbuild src/index.tsx --bundle --loader:.png=file --loader:.jpg=file --loader:.ttf=file --loader:.woff=file --loader:.woff2=file --outdir=dist"
-  },
-  "dependencies": {
-    "@pwa-fundament/components": "^1.0.0-beta1",
-    "@pwa-fundament/reactivity": "^1.0.0-beta1",
-    "@pwa-fundament/stylesheet": "^1.0.0-beta1",
-    "@pwa-fundament/themes": "^1.0.0-beta1",
-    "@types/prismjs": "^1.26.4",
-    "prismjs": "^1.29.0"
-  }
+    "scripts": {
+        "build": "esbuild src/index.tsx --bundle --loader:.png=file --loader:.jpg=file --loader:.ttf=file --loader:.woff=file --loader:.woff2=file --outdir=dist"
+    },
+    "dependencies": {
+        "@pwa-fundament/components": "^1.0.0-beta1",
+        "@pwa-fundament/reactivity": "^1.0.0-beta1",
+        "@pwa-fundament/stylesheet": "^1.0.0-beta1",
+        "@pwa-fundament/themes": "^1.0.0-beta1",
+        "@types/prismjs": "^1.26.4",
+        "prismjs": "^1.29.0"
+    }
 }
