@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "build": "esbuild src/index.tsx --bundle --loader:.png=file --loader:.jpg=file --loader:.ttf=file --loader:.woff=file --loader:.woff2=file --outdir=dist"
+        "build": "esbuild src/index.tsx --bundle --minify --loader:.png=file --loader:.jpg=file --loader:.ttf=file --loader:.woff=file --loader:.woff2=file --outdir=dist"
     },
     "dependencies": {
         "@pwa-fundament/components": "^1.0.0-beta1",
